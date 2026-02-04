@@ -1,5 +1,5 @@
-use crate::lexer::Token;
 use crate::ast::{Expr, Stmt};
+use crate::lexer::Token;
 
 pub struct Parser {
     tokens: Vec<Token>,
@@ -49,9 +49,15 @@ impl Parser {
     fn parse_fn(&mut self) -> Option<Stmt> {
         self.next(); // consume 'fn'
         if let Token::Ident(name) = self.next().clone() {
-            if self.next() != &Token::LParen { return None; }
-            if self.next() != &Token::RParen { return None; }
-            if self.next() != &Token::LBrace { return None; }
+            if self.next() != &Token::LParen {
+                return None;
+            }
+            if self.next() != &Token::RParen {
+                return None;
+            }
+            if self.next() != &Token::LBrace {
+                return None;
+            }
 
             let mut body = Vec::new();
             while self.peek() != &Token::RBrace && self.peek() != &Token::EOF {
@@ -70,7 +76,9 @@ impl Parser {
     fn parse_let(&mut self) -> Option<Stmt> {
         self.next(); // consume 'let'
         if let Token::Ident(name) = self.next().clone() {
-            if self.next() != &Token::Eq { return None; }
+            if self.next() != &Token::Eq {
+                return None;
+            }
             if let Some(value) = self.parse_expr() {
                 return Some(Stmt::Let { name, value });
             }
@@ -81,7 +89,9 @@ impl Parser {
     fn parse_var(&mut self) -> Option<Stmt> {
         self.next(); // consume 'var'
         if let Token::Ident(name) = self.next().clone() {
-            if self.next() != &Token::Eq { return None; }
+            if self.next() != &Token::Eq {
+                return None;
+            }
             if let Some(value) = self.parse_expr() {
                 return Some(Stmt::Var { name, value });
             }
@@ -98,11 +108,14 @@ impl Parser {
     }
 
     fn parse_expr(&mut self) -> Option<Expr> {
-        match self.next() {
-            Token::Number(n) => Some(Expr::Number(*n)),
-            Token::String(s) => Some(Expr::String(s.clone())),
+        let tok = self.next().clone(); // take ownership of the token
+
+        match tok {
+            Token::Number(n) => Some(Expr::Number(n)),
+            Token::String(s) => Some(Expr::String(s)),
             Token::Ident(name) => {
-                if self.peek() == &Token::LParen {
+                if let Token::LParen = self.peek() {
+                    // only peek here, ok
                     self.next(); // consume '('
                     let mut args = Vec::new();
                     while self.peek() != &Token::RParen && self.peek() != &Token::EOF {
@@ -111,9 +124,9 @@ impl Parser {
                         }
                     }
                     self.next(); // consume ')'
-                    Some(Expr::Call { name: name.clone(), args })
+                    Some(Expr::Call { name, args })
                 } else {
-                    Some(Expr::Ident(name.clone()))
+                    Some(Expr::Ident(name))
                 }
             }
             _ => None,
