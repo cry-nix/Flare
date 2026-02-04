@@ -1,0 +1,91 @@
+# Flare 🟡
+
+**Flare** is a lightweight, experimental programming language written in Rust. Designed to be simple, fun, and easy to extend, it’s perfect for learning language design or building small projects.
+
+---
+
+## Features
+
+* Minimal syntax inspired by modern languages
+* Variables: `let` and `var`
+* Functions and function calls
+* Built-in `print` function
+* Abstract Syntax Tree (AST) and interpreter written in Rust
+* Extensible: can add GUI, loops, operators, and more in the future
+
+---
+
+## Example Program
+
+```flare
+fn main() {
+    let x = 42
+    print("Hello Flare! Value of x is ", x)
+}
+```
+
+**Output:**
+
+```
+Hello Flare! Value of x is 42
+```
+
+---
+
+## Getting Started
+
+### Requirements
+
+* Rust 1.72+
+* Cargo (comes with Rust)
+
+### Build & Run
+
+```bash
+git clone https://github.com/YOUR_USERNAME/flare.git
+cd flare
+cargo run
+```
+
+You should see the tokens, AST, and program output printed in your terminal.
+
+---
+
+## Project Structure
+
+```
+flare/
+├── src/
+│   ├── ast.rs       # AST definitions
+│   ├── lexer.rs     # Lexer / tokenizer
+│   ├── parser.rs    # Parser
+│   ├── eval.rs      # Interpreter / evaluator
+│   └── main.rs      # Entry point
+└── Cargo.toml       # Rust project config
+```
+
+---
+
+## Future Plans
+
+* Function parameters and return values
+* Operators: `+`, `-`, `*`, `/`
+* Control flow: `if`, `while`, `for`
+* Standard library: strings, math, lists
+* GUI package for Flare (fun project idea 😄)
+
+---
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
+
+All contributions are welcome!
+
+---
+
+## License
+
+MIT License © 2026 Youssef
