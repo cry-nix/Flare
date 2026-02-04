@@ -89,4 +89,4 @@ All contributions are welcome!
 
 ## License
 
-MIT License © 2026 Youssef
+MIT License © 2026 cry-nix
