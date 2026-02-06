@@ -32,40 +32,6 @@ Hello Flare! Value of x is 42
 
 ---
 
-## Getting Started
-
-### Requirements
-
-* Rust 1.72+
-* Cargo (comes with Rust)
-
-### Build & Run
-
-```bash
-git clone https://github.com/YOUR_USERNAME/flare.git
-cd flare
-cargo run
-```
-
-You should see the tokens, AST, and program output printed in your terminal.
-
----
-
-## Project Structure
-
-```
-flare/
-├── src/
-│   ├── ast.rs       # AST definitions
-│   ├── lexer.rs     # Lexer / tokenizer
-│   ├── parser.rs    # Parser
-│   ├── eval.rs      # Interpreter / evaluator
-│   └── main.rs      # Entry point
-└── Cargo.toml       # Rust project config
-```
-
----
-
 ## Future Plans
 
 * Function parameters and return values
