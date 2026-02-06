@@ -1,6 +1,6 @@
 ![image](https://i.ibb.co/gLmRhxwH/flare-text.png)
 
-**Flare** is a lightweight, experimental programming language written in Rust. Designed to be simple, fun, and easy to extend, it’s perfect for learning language design or building small projects.
+**Flare** is a simple but powerful programming language, it has the syntax of python but the power of c++, btw it's written in rust.
 
 ---
 
